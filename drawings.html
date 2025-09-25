@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Drawings - AdhiVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Roboto&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00ffe1;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .gallery div {
+      text-align: center;
+    }
+
+    .gallery img {
+       width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border: 2px solid #00ffe1;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 3rem;
+      text-decoration: none;
+      color: #00ffe1;
+      font-weight: bold;
+      border: 2px solid #00ffe1;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a.back:hover {
+      background-color: #00ffe1;
+      color: black;
+    }
+
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 3px solid #00ffe1;
+      border-radius: 12px;
+    }
+
+    #close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Drawings ✍️</h1>
+  <p>Here's a little window into my Drawings. Hope you like them!</p>
+
+  <div class="gallery">
+    <div><img src="images/drawing1.png" alt="Drawing 1"/><p>Boat</p></div>
+    <div><img src="images/drawing2.png" alt="Drawing 2"/><p>Yacht</p></div>
+    <div><img src="images/drawing3.png" alt="Drawing 3"/><p>Sunset</p></div>
+    <div><img src="images/drawing4.png" alt="Drawing 4"/><p>Small Village</p></div>
+    <div><img src="images/drawing5.png" alt="Drawing 5"/><p>Field</p></div>
+    <div><img src="images/drawing6.png" alt="Drawing 6"/><p>Luffy vs Doflamingo</p></div>
+    <div><img src="images/drawing7.png" alt="Drawing 7"/><p>Luffy vs Kaido</p></div>
+    <div><img src="images/drawing8.png" alt="Drawing 8"/><p>Zoro</p></div>
+  </div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+
+
+  <div id="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Zoomed Drawing"/>
+  </div>
+
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
